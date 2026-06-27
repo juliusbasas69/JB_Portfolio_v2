@@ -1,12 +1,13 @@
 import { SiteNav } from "@/components/site-nav";
 import { Hero } from "@/components/hero";
-// import { About } from '@/components/about'
-// import { Competencies } from '@/components/competencies'
-// import { TechStack } from '@/components/tech-stack'
-// import { Projects } from '@/components/projects'
+import { About } from "@/components/about";
+import { Competencies } from "@/components/competencies";
+import { TechStack } from "@/components/tech-stack";
+import { Journey } from "@/components/journey";
+//import { Projects } from '@/components/projects'
 // import { Experience } from '@/components/experience'
 // import { CurrentFocus } from '@/components/current-focus'
-// import { Certifications } from '@/components/certifications'
+import { Certifications } from "@/components/certifications";
 import { Contact } from "@/components/contact";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -16,13 +17,14 @@ export default function Page() {
       <SiteNav />
       <main>
         <Hero />
-        {/* <About />
+        <About />
         <Competencies />
         <TechStack />
-        <Projects />
+        <Journey />
+        {/*<Projects />
         <Experience />
-        <CurrentFocus />
-        <Certifications /> */}
+        <CurrentFocus /> */}
+        <Certifications />
         <Contact />
       </main>
       <SiteFooter />

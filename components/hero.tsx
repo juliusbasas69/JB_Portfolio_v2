@@ -19,7 +19,7 @@ const stats = [
   {
     icon: Smartphone,
     title: "Android Apps",
-    value: "3+ Apps",
+    value: "Learning",
     color: "bg-cyan-500",
   },
   {

@@ -1,7 +1,16 @@
 "use client";
-
 import { useState, type FormEvent } from "react";
-import { Mail, FileText, Send, CheckCircle2, ArrowUpRight } from "lucide-react";
+
+import {
+  Mail,
+  FileText,
+  Send,
+  CheckCircle2,
+  ArrowUpRight,
+  X,
+  Download,
+} from "lucide-react";
+
 import { SectionHeading } from "@/components/section-heading";
 import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
 import { Reveal } from "@/components/reveal";
@@ -18,27 +27,27 @@ const channels = [
     icon: GithubIcon,
     label: "GitHub",
     value: "github.com/juliusbasas",
-    href: "https://github.com/",
+    href: "https://github.com/juliusbasas",
     tone: "text-indigo",
   },
   {
     icon: LinkedinIcon,
     label: "LinkedIn",
     value: "linkedin.com/in/juliusbasas",
-    href: "https://linkedin.com/",
+    href: "https://linkedin.com/in/julius-basas",
     tone: "text-highlight",
   },
   {
     icon: FileText,
     label: "Resume",
-    value: "Download PDF",
-    href: "/julius-basas-resume.pdf",
+    value: "View Resume",
     tone: "text-teal",
   },
 ];
 
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [resumeOpen, setResumeOpen] = useState(false);
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -46,7 +55,10 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="relative scroll-mt-20 py-20 sm:py-28">
+    <section
+      id="contact"
+      className="relative scroll-mt-20 py-20 sm:py-28"
+    >
       <div
         className="pointer-events-none absolute inset-0 blueprint-grid animate-grid-pan"
         aria-hidden
@@ -82,61 +94,111 @@ export function Contact() {
           <div className="grid gap-4 sm:grid-cols-2 lg:content-start">
             {channels.map((c, i) => {
               const Icon = c.icon;
+              const isResume = c.label === "Resume";
+
+              const content = (
+                <>
+                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-sky-100 to-cyan-100 text-sky-600 transition-all duration-300 group-hover:scale-110 group-hover:from-sky-500 group-hover:to-cyan-500 group-hover:text-white">
+                    <Icon
+                      className={`size-5 ${c.tone}`}
+                      strokeWidth={2}
+                    />
+                  </span>
+
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-sm font-semibold text-foreground">
+                      {c.label}
+                    </span>
+
+                    <span className="block truncate text-sm text-muted-foreground">
+                      {c.value}
+                    </span>
+                  </span>
+
+                  <ArrowUpRight className="size-4 shrink-0 text-sky-400 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-sky-600" />
+                </>
+              );
+
               return (
-                <Reveal key={c.label} delay={(i % 2) * 70}>
-                  <a
-                    href={c.href}
-                    target={c.href.startsWith("http") ? "_blank" : undefined}
-                    rel={
-                      c.href.startsWith("http")
-                        ? "noopener noreferrer"
-                        : undefined
-                    }
-                    className="
-group flex h-full items-center gap-4
-rounded-2xl
-border border-sky-200
-bg-white/80
-backdrop-blur-xl
-p-5
-shadow-sm
-transition-all duration-300
-hover:-translate-y-1
-hover:border-sky-400
-hover:shadow-xl hover:shadow-sky-200/40
-"
-                  >
-                    <span
-                      className="
-grid size-11 shrink-0 place-items-center
-rounded-xl
-bg-gradient-to-br
-from-sky-100
-to-cyan-100
-text-sky-600
-transition-all duration-300
-group-hover:scale-110
-group-hover:from-sky-500
-group-hover:to-cyan-500
-group-hover:text-white
-"
+                <Reveal
+                  key={c.label}
+                  delay={(i % 2) * 70}
+                >
+                  {isResume ? (
+                    <button
+                      type="button"
+                      onClick={() => setResumeOpen(true)}
+                      className="group flex h-full w-full items-center gap-4 rounded-2xl border border-sky-200 bg-white/80 p-5 text-left shadow-sm backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-sky-400 hover:shadow-xl hover:shadow-sky-200/40"
                     >
-                      <Icon className={`size-5 ${c.tone}`} strokeWidth={2} />
-                    </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="block text-sm font-semibold text-foreground">
-                        {c.label}
-                      </span>
-                      <span className="block truncate text-sm text-muted-foreground">
-                        {c.value}
-                      </span>
-                    </span>
-                    <ArrowUpRight className="size-4 shrink-0 text-sky-400 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-sky-600" />{" "}
-                  </a>
+                      {content}
+                    </button>
+                  ) : (
+                    <a
+                      href={c.href}
+                      target={c.href?.startsWith("http") ? "_blank" : undefined}
+                      rel={
+                        c.href?.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
+                      className="group flex h-full items-center gap-4 rounded-2xl border border-sky-200 bg-white/80 p-5 shadow-sm backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-sky-400 hover:shadow-xl hover:shadow-sky-200/40"
+                    >
+                      {content}
+                    </a>
+                  )}
                 </Reveal>
               );
             })}
           </div>
+
+          {resumeOpen && (
+            <div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/60 p-4 backdrop-blur-sm"
+              onClick={() => setResumeOpen(false)}
+            >
+              <div
+                className="relative flex h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-sky-200 bg-white shadow-2xl"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Header */}
+                <div className="flex items-center justify-between border-b border-sky-100 bg-white px-5 py-4">
+                  <div>
+                    <h2 className="font-semibold text-slate-900">My Resume</h2>
+                    <p className="text-xs text-slate-500">Julius Basas</p>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <a
+                      href="/jbasas-resume.pdf"
+                      download
+                      className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-sky-500 to-cyan-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                    >
+                      <Download className="size-4" />
+                      Download
+                    </a>
+
+                    <button
+                      type="button"
+                      onClick={() => setResumeOpen(false)}
+                      className="grid size-9 place-items-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-slate-900"
+                      aria-label="Close resume"
+                    >
+                      <X className="size-5" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* PDF */}
+                <div className="min-h-0 flex-1 bg-slate-100">
+                  <iframe
+                    src="/jbasas-resume.pdf"
+                    title="Julius Basas Resume"
+                    className="h-full w-full"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
 
           <Reveal delay={80}>
             <div
@@ -174,7 +236,10 @@ shadow-sky-300/40
                   </p>
                 </div>
               ) : (
-                <form onSubmit={onSubmit} className="flex flex-col gap-4">
+                <form
+                  onSubmit={onSubmit}
+                  className="flex flex-col gap-4"
+                >
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div className="flex flex-col gap-1.5">
                       <label

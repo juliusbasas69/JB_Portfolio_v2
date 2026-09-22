@@ -3,6 +3,17 @@ import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 const professionalProjects = [
   {
+    title: "Preschool Project",
+    company: "BridgeCulture",
+    type: "Web Application",
+    description:
+      "A content management platform for registering and organizing preschool and ESL educational materials for Cloudt, with batch processing capabilities for efficiently handling multiple content files.",
+    technologies: ["Java", "Spring Boot", "PostgreSQL"],
+    status: "Live",
+    live: true,
+    href: "#",
+  },
+  {
     title: "BC Workflow",
     company: "BridgeCulture",
     type: "Web Application",

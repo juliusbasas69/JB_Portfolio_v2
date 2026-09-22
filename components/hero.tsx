@@ -88,7 +88,7 @@ export function Hero() {
           <span>
             <div className="flex flex-wrap items-center gap-3">
               <a
-                href="#projects"
+                href="/projects"
                 className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500
 text-white
 shadow-lg

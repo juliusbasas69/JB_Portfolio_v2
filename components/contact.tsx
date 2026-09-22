@@ -12,7 +12,11 @@ import {
 } from "lucide-react";
 
 import { SectionHeading } from "@/components/section-heading";
-import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
+import {
+  GithubIcon,
+  LinkedinIcon,
+  FacebookIcon,
+} from "@/components/brand-icons";
 import { Reveal } from "@/components/reveal";
 
 const channels = [
@@ -36,6 +40,13 @@ const channels = [
     value: "linkedin.com/in/juliusbasas",
     href: "https://linkedin.com/in/julius-basas",
     tone: "text-highlight",
+  },
+  {
+    icon: FacebookIcon,
+    label: "Facebook",
+    value: "facebook.com/profile.php?id=61577425559511",
+    href: "https://www.facebook.com/profile.php?id=61577425559511",
+    tone: "text-blue-600",
   },
   {
     icon: FileText,

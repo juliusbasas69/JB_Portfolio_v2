@@ -59,7 +59,7 @@ export function Hero() {
           <span>
             <span className="inline-flex w-fit items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-xs font-semibold text-sky-700 shadow-sm">
               <Sparkles className="size-3.5 text-sky-500" />
-              Full Stack Engineer
+              Software Engineer
             </span>
           </span>
 

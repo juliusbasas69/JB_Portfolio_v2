@@ -13,7 +13,10 @@ export function SiteFooter() {
         {/* Logo */}
         <div className="flex items-center gap-3">
           <span className="grid size-10 place-items-center rounded-xl bg-gradient-to-br from-sky-500 to-cyan-500 text-white shadow-lg shadow-sky-300/40">
-            <Hexagon className="size-5" strokeWidth={2.25} />
+            <Hexagon
+              className="size-5"
+              strokeWidth={2.25}
+            />
           </span>
 
           <div className="leading-tight">
@@ -21,7 +24,7 @@ export function SiteFooter() {
               JULIUS BASAS
             </p>
             <p className="text-[10px] uppercase tracking-[0.25em] text-sky-500">
-              Full Stack Engineer
+              Software Engineer
             </p>
           </div>
         </div>
@@ -39,7 +42,7 @@ export function SiteFooter() {
           {[
             {
               icon: GithubIcon,
-              href: "https://github.com/yourusername",
+              href: "https://github.com/juliusbasas69",
               label: "GitHub",
             },
             {
